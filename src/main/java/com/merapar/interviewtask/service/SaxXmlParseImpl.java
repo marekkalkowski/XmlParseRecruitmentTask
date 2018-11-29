@@ -1,6 +1,6 @@
 package com.merapar.interviewtask.service;
 
-import com.merapar.interviewtask.Model.SAXHandler;
+import com.merapar.interviewtask.post.SAXHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.InputSource;

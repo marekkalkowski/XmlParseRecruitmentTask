@@ -1,8 +1,7 @@
 package com.merapar.interviewtask.controller;
 
-import com.merapar.interviewtask.Model.Post;
-import com.merapar.interviewtask.Model.PostAnalyzeService;
-import com.merapar.interviewtask.Model.SAXHandler;
+import com.merapar.interviewtask.post.Post;
+import com.merapar.interviewtask.post.PostAnalyzeService;
 import com.merapar.interviewtask.service.SaxXmlParseImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,12 +29,12 @@ public class RestControler {
     @PostMapping("/analyze/first-post")
     public LocalDateTime fisrtPostDate() {
         xmlParse.parseXml();
-        return postAnalyzeService.firstPostDate();
+        return postAnalyzeService.firstPostDate(postAnalyzeService.getPostList());
     }
 
     @PostMapping("/analyze/avg-score")
     public double avarageScore() {
         xmlParse.parseXml();
-        return postAnalyzeService.avarageScore();
+        return postAnalyzeService.avarageScore(postAnalyzeService.getPostList());
     }
 }

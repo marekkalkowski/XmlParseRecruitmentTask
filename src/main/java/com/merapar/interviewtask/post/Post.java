@@ -1,4 +1,4 @@
-package com.merapar.interviewtask.Model;
+package com.merapar.interviewtask.post;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +10,18 @@ public class Post {
     private LocalDateTime creationDate;
     private int score;
     private LocalDateTime lastActivityDate;
-    //private int ViewCount;
+
+    public Post() {
+    }
+
+    public Post(int id, LocalDateTime creationDate, int score, LocalDateTime lastActivityDate) {
+        this.id = id;
+        this.creationDate = creationDate;
+        this.score = score;
+        this.lastActivityDate = lastActivityDate;
+    }
+
+//private int ViewCount;
 
     public int getId() {
         return id;

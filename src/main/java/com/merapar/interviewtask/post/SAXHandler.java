@@ -1,18 +1,14 @@
-package com.merapar.interviewtask.Model;
+package com.merapar.interviewtask.post;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @Scope(scopeName = "prototype")
