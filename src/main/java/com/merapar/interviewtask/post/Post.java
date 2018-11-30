@@ -1,27 +1,27 @@
 package com.merapar.interviewtask.post;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Repository
+@Component
 public class Post {
     private int id;
     private LocalDateTime creationDate;
     private int score;
     private LocalDateTime lastActivityDate;
+    private String AcceptedAnswerId;
 
     public Post() {
     }
 
-    public Post(int id, LocalDateTime creationDate, int score, LocalDateTime lastActivityDate) {
+    public Post(int id, LocalDateTime creationDate, int score, LocalDateTime lastActivityDate, String acceptedAnswerId) {
         this.id = id;
         this.creationDate = creationDate;
         this.score = score;
         this.lastActivityDate = lastActivityDate;
+        AcceptedAnswerId = acceptedAnswerId;
     }
-
-//private int ViewCount;
 
     public int getId() {
         return id;
@@ -55,13 +55,13 @@ public class Post {
         this.lastActivityDate = lastActivityDate;
     }
 
-//    public int getViewCount() {
-//        return ViewCount;
-//    }
-//
-//    public void setViewCount(int viewCount) {
-//        ViewCount = viewCount;
-//    }
+    public String getAcceptedAnswerId() {
+        return AcceptedAnswerId;
+    }
+
+    public void setAcceptedAnswerId(String acceptedAnswerId) {
+        AcceptedAnswerId = acceptedAnswerId;
+    }
 
     @Override
     public String toString() {
@@ -70,7 +70,11 @@ public class Post {
         sb.append(", creationDate=").append(creationDate);
         sb.append(", score=").append(score);
         sb.append(", lastActivityDate=").append(lastActivityDate);
+        sb.append(", AcceptedAnswerId='").append(AcceptedAnswerId).append('\'');
         sb.append('}');
         return sb.toString();
     }
 }
+
+
+
