@@ -1,4 +1,4 @@
-package com.merapar.interviewtask.post;
+package com.merapar.interviewtask.model;
 
 import org.springframework.stereotype.Component;
 

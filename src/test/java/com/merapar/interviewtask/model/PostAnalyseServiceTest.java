@@ -1,5 +1,6 @@
-package com.merapar.interviewtask.post;
+package com.merapar.interviewtask.model;
 
+import com.merapar.interviewtask.service.PostAnalyseService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -27,50 +28,64 @@ public class PostAnalyseServiceTest {
                 LocalDateTime.parse("2016-07-14T18:39:27.757"), "brak"));
         posts.add(new Post(2, LocalDateTime.parse("2016-07-14T18:39:27.757"), 3,
                 LocalDateTime.parse("2017-07-14T18:39:27.757"), "AcceptedAnswerId"));
+        posts.add(new Post(-2000, LocalDateTime.parse("0000-01-01T00:00:00.000"), -2000,
+                LocalDateTime.parse("0000-01-01T00:00:00.000"), "AcceptedAnswerId"));
     }
 
     @Test
     @DisplayName("Should pick up first post date")
     public void returnFirstPostDate() {
-        //act
+        //GIVEN
+        LocalDateTime expected = LocalDateTime.parse("2015-07-14T18:39:27.757");
+        //WHEN
         LocalDateTime result = postAnalyseService.firstPostDate(posts);
-        //asssert
-        assertEquals(result, LocalDateTime.parse("2015-07-14T18:39:27.757"));
+        //THEN
+        assertEquals(expected, result);
     }
 
     @Test
-    @DisplayName("Should pick up last date of post d")
+    @DisplayName("Should return last date of post")
     public void returnLastPostDate() {
-        //act
+        //GIVEN
+        LocalDateTime expected = LocalDateTime.parse("2017-07-14T18:39:27.757");
+        //WHEN
         LocalDateTime result = postAnalyseService.lastActivityDate(posts);
-        //asssert
-        assertEquals(result, LocalDateTime.parse("2017-07-14T18:39:27.757"));
+        //THEN
+        assertEquals(expected,result);
     }
 
     @Test
     @DisplayName("Should count avarage Score for all posts")
-    public void returnAvarageScore() {
-        //act
+    public void sholudReturnAvarageScore() {
+        //GIVEN
+        long expected = 4;
+        //WHEN
         long result = postAnalyseService.avarageScore(posts);
-        //asssert
-        assertEquals(result, 4);
+        //THEN
+        assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Shuld return number of posts")
     public void returnPostsNumber() {
-        //act
+        //GIVEN
+        long expected = 3;
+        //WHEN
         long result = postAnalyseService.postsNumber(posts);
-        //asssert
-        assertEquals(result, 2);
+        //THEN
+        assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Should return number of posts with accepted answers")
     public void returnAcceptedPostsNumber() {
-        //act
+        //GIVEN
+        long expected = 2;
+        //WHEN
         long result = postAnalyseService.acceptedPostsNumber(posts);
-        //asssert
-        assertEquals(result, 1);
+        //THEN
+        assertEquals(expected, result);
     }
+
+
 }

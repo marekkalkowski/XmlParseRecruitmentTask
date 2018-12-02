@@ -1,7 +1,11 @@
-package com.merapar.interviewtask.post;
+package com.merapar.interviewtask.service;
 
+import com.merapar.interviewtask.model.Post;
+import com.merapar.interviewtask.model.PostsDetails;
+import com.merapar.interviewtask.repository.PostRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @Component
@@ -13,8 +17,11 @@ public class PostDetailsInstanceGenerator {
     @Autowired
     private PostAnalyseService postAnalyseService;
 
+    @Autowired
+    private PostRepositoryImpl postRepositoryImpl;
+
     public PostsDetails generatePostDetailsInstance() {
-        List<Post> posts = postAnalyseService.getPostList();
+        List<Post> posts = postRepositoryImpl.getPostList();
 
         postsDetails = new PostsDetails();
         postsDetails.setFirstPost(postAnalyseService.firstPostDate(posts));

@@ -1,6 +1,6 @@
 package com.merapar.interviewtask.service;
 
-import com.merapar.interviewtask.post.PostsUrl;
+import com.merapar.interviewtask.model.PostsUrl;
 
 public interface XmlParse {
 

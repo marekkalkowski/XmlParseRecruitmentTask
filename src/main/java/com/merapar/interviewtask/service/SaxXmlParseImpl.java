@@ -1,6 +1,6 @@
 package com.merapar.interviewtask.service;
 
-import com.merapar.interviewtask.post.PostsUrl;
+import com.merapar.interviewtask.model.PostsUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.xml.sax.InputSource;

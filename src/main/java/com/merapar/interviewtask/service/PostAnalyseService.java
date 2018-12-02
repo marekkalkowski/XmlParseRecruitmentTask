@@ -1,28 +1,20 @@
-package com.merapar.interviewtask.post;
+package com.merapar.interviewtask.service;
 
+import com.merapar.interviewtask.model.Post;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class PostAnalyseService {
 
-    private List<Post> postList = new ArrayList<>();
-
-    public List<Post> getPostList() {
-        return postList;
-    }
-
-    public void addPostToList(Post post) {
-        this.postList.add(post);
-    }
 
     public LocalDateTime firstPostDate(List<Post> posts) {
 
         LocalDateTime date = posts.stream()
                 .map(post -> post.getCreationDate())
+                .filter(p->!p.equals(LocalDateTime.parse("0000-01-01T00:00:00.000")))
                 .min(LocalDateTime::compareTo)
                 .get();
         return date;
@@ -31,6 +23,7 @@ public class PostAnalyseService {
     public long avarageScore(List<Post> posts) {
         double avgScore = posts.stream()
                 .mapToInt(Post::getScore)
+                .filter(i->i != -2000)
                 .average()
                 .getAsDouble();
         return Math.round(avgScore);
@@ -54,6 +47,7 @@ public class PostAnalyseService {
     public LocalDateTime lastActivityDate(List<Post> posts) {
         LocalDateTime date = posts.stream()
                 .map(post -> post.getLastActivityDate())
+                .filter(p->!p.equals(LocalDateTime.parse("0000-01-01T00:00:00.000")))
                 .max(LocalDateTime::compareTo)
                 .get();
         return date;

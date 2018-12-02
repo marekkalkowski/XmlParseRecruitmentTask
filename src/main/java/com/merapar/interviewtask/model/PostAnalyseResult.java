@@ -1,4 +1,4 @@
-package com.merapar.interviewtask.post;
+package com.merapar.interviewtask.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,4 +28,6 @@ public class PostAnalyseResult {
     public void setPostsDetails(PostsDetails postsDetails) {
         this.postsDetails = postsDetails;
     }
+
+
 }
