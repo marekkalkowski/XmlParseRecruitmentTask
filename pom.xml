@@ -5,10 +5,10 @@
 
 	<groupId>com.merapar</groupId>
 	<artifactId>job</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>job</name>
+	<name>interviewTask</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -64,6 +64,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>interviewTask</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
