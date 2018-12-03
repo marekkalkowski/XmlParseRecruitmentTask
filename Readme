@@ -1,5 +1,5 @@
-to run docker image
+to run docker image follow steps:
 
-fisrt in the root directory of the project (where the dockerfile is) :  docker pull openjdk:8u181-jdk
-
-second: docker run -p 8080:8080 job
+1) docker pull openjdk:8u181-jdk
+2) in the root directory of the project (where the dockerfile is): docker build -t job .
+3) docker run -p 8080:8080 job
