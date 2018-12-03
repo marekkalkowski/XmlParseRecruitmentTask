@@ -29,6 +29,9 @@ public class PostDetailsInstanceGenerator {
         postsDetails.setTotalPosts(postAnalyseService.postsNumber(posts));
         postsDetails.setTotalAcceptedPosts(postAnalyseService.acceptedPostsNumber(posts));
         postsDetails.setLastPost(postAnalyseService.lastActivityDate(posts));
+        postsDetails.setLargestNumberOfViews(postAnalyseService.largestNumberOfViews(posts));
+        postsDetails.setMaxScore(postAnalyseService.maxScore(posts));
+        postsDetails.setMinScore(postAnalyseService.minScore(posts));
 
         return postsDetails;
     }

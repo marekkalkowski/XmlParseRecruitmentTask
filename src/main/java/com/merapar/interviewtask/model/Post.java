@@ -11,16 +11,18 @@ public class Post {
     private int score;
     private LocalDateTime lastActivityDate;
     private String AcceptedAnswerId;
+    private int viewCount;
 
     public Post() {
     }
 
-    public Post(int id, LocalDateTime creationDate, int score, LocalDateTime lastActivityDate, String acceptedAnswerId) {
+    public Post(int id, LocalDateTime creationDate, int score, LocalDateTime lastActivityDate, String acceptedAnswerId, int viewCount) {
         this.id = id;
         this.creationDate = creationDate;
         this.score = score;
         this.lastActivityDate = lastActivityDate;
         AcceptedAnswerId = acceptedAnswerId;
+        this.viewCount = viewCount;
     }
 
     public int getId() {
@@ -61,6 +63,14 @@ public class Post {
 
     public void setAcceptedAnswerId(String acceptedAnswerId) {
         AcceptedAnswerId = acceptedAnswerId;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
     }
 
     @Override

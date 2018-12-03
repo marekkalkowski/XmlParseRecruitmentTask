@@ -1,6 +1,7 @@
 package com.merapar.interviewtask.model;
 
 import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
 
 @Component
@@ -11,6 +12,9 @@ public class PostsDetails {
     private long totalPosts;
     private long totalAcceptedPosts;
     private long avgScore;
+    private int maxScore;
+    private int minScore;
+    private int largestNumberOfViews;
 
     public LocalDateTime getFirstPost() {
         return firstPost;
@@ -52,15 +56,27 @@ public class PostsDetails {
         this.avgScore = avgScore;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("PostsDetails{");
-        sb.append("firstPost=").append(firstPost);
-        sb.append(", lastPost=").append(lastPost);
-        sb.append(", totalPosts=").append(totalPosts);
-        sb.append(", totalAcceptedPosts=").append(totalAcceptedPosts);
-        sb.append(", avgScore=").append(avgScore);
-        sb.append('}');
-        return sb.toString();
+    public int getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(int maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public int getMinScore() {
+        return minScore;
+    }
+
+    public void setMinScore(int minScore) {
+        this.minScore = minScore;
+    }
+
+    public int getLargestNumberOfViews() {
+        return largestNumberOfViews;
+    }
+
+    public void setLargestNumberOfViews(int largestNumberOfViews) {
+        this.largestNumberOfViews = largestNumberOfViews;
     }
 }

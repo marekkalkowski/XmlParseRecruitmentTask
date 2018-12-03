@@ -1,11 +1,9 @@
 package com.merapar.interviewtask.model;
 
 import com.merapar.interviewtask.service.PostAnalyseService;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,23 +11,22 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class PostAnalyseServiceTest {
 
     private List<Post> posts = new ArrayList<>();
     private PostAnalyseService postAnalyseService;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeEach
+    public void setUp() {
 
         postAnalyseService = new PostAnalyseService();
 
         posts.add(new Post(1, LocalDateTime.parse("2015-07-14T18:39:27.757"), 5,
-                LocalDateTime.parse("2016-07-14T18:39:27.757"), "brak"));
-        posts.add(new Post(2, LocalDateTime.parse("2016-07-14T18:39:27.757"), 3,
-                LocalDateTime.parse("2017-07-14T18:39:27.757"), "AcceptedAnswerId"));
+                LocalDateTime.parse("2016-07-14T18:39:27.757"), "brak", 120));
+        posts.add(new Post(2, LocalDateTime.parse("2016-07-14T18:39:27.757"), -1,
+                LocalDateTime.parse("2017-07-14T18:39:27.757"), "AcceptedAnswerId", 15));
         posts.add(new Post(-2000, LocalDateTime.parse("0000-01-01T00:00:00.000"), -2000,
-                LocalDateTime.parse("0000-01-01T00:00:00.000"), "AcceptedAnswerId"));
+                LocalDateTime.parse("0000-01-01T00:00:00.000"), "AcceptedAnswerId", -2000));
     }
 
     @Test
@@ -51,14 +48,14 @@ public class PostAnalyseServiceTest {
         //WHEN
         LocalDateTime result = postAnalyseService.lastActivityDate(posts);
         //THEN
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
     @DisplayName("Should count avarage Score for all posts")
     public void sholudReturnAvarageScore() {
         //GIVEN
-        long expected = 4;
+        long expected = 2;
         //WHEN
         long result = postAnalyseService.avarageScore(posts);
         //THEN
@@ -87,5 +84,36 @@ public class PostAnalyseServiceTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    @DisplayName("Should return number of max view count of posts")
+    void largestNumberOfViews() {
+        //GIVEN
+        int expected = 120;
+        //WHEN
+        int result = postAnalyseService.largestNumberOfViews(posts);
+        //THEN
+        assertEquals(expected, result);
+    }
 
+    @Test
+    @DisplayName("Should return number of maxScore")
+    void maxScore() {
+        //GIVEN
+        int expected = 5;
+        //WHEN
+        int result = postAnalyseService.maxScore(posts);
+        //THEN
+        assertEquals(expected, result);
+    }
+
+    @Test
+    @DisplayName("Should return number of min Score")
+    void minScore() {
+        //GIVEN
+        int expected = -1;
+        //WHEN
+        int result = postAnalyseService.minScore(posts);
+        //THEN
+        assertEquals(expected, result);
+    }
 }

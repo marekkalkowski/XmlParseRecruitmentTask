@@ -29,5 +29,4 @@ public class PostAnalyseResult {
         this.postsDetails = postsDetails;
     }
 
-
 }

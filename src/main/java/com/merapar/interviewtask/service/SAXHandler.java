@@ -22,9 +22,9 @@ public class SAXHandler extends DefaultHandler {
     @Autowired
     private Post post;
 
-    private String valueIfParamIsNull = "brak";
+    private String stringValueIfParamIsNull = "brak";
     private String dateValueIfParamIsNull = "0000-01-01T00:00:00.000";
-    private String intValuIfParamIsNull = "-2000";
+    private String intValueIfParamIsNull = "-2000";
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -33,17 +33,19 @@ public class SAXHandler extends DefaultHandler {
             case "row":
                 post = new Post();
 
-                String id = Optional.ofNullable(attributes.getValue("Id")).orElse(intValuIfParamIsNull);
-                String score = Optional.ofNullable(attributes.getValue("Score")).orElse(intValuIfParamIsNull);
+                String id = Optional.ofNullable(attributes.getValue("Id")).orElse(intValueIfParamIsNull);
+                String score = Optional.ofNullable(attributes.getValue("Score")).orElse(intValueIfParamIsNull);
                 String creationDate = Optional.ofNullable(attributes.getValue("CreationDate")).orElse(dateValueIfParamIsNull);
                 String lastActivityDate = (Optional.ofNullable(attributes.getValue("LastActivityDate")).orElse(dateValueIfParamIsNull));
-                String acceptedAnswer = Optional.ofNullable(attributes.getValue("AcceptedAnswerId")).orElse(valueIfParamIsNull);
+                String acceptedAnswer = Optional.ofNullable(attributes.getValue("AcceptedAnswerId")).orElse(stringValueIfParamIsNull);
+                String viewCount = Optional.ofNullable(attributes.getValue("ViewCount")).orElse(intValueIfParamIsNull);
 
                 post.setId(Integer.parseInt(id));
                 post.setScore(Integer.parseInt(score));
                 post.setCreationDate(LocalDateTime.parse(creationDate));
                 post.setLastActivityDate(LocalDateTime.parse(lastActivityDate));
                 post.setAcceptedAnswerId(acceptedAnswer);
+                post.setViewCount(Integer.parseInt(viewCount));
 
                 postRepositoryImpl.addPostToList(post);
                 break;

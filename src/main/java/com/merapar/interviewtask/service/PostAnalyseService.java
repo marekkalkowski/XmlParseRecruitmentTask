@@ -14,7 +14,7 @@ public class PostAnalyseService {
 
         LocalDateTime date = posts.stream()
                 .map(post -> post.getCreationDate())
-                .filter(p->!p.equals(LocalDateTime.parse("0000-01-01T00:00:00.000")))
+                .filter(p -> !p.equals(LocalDateTime.parse("0000-01-01T00:00:00.000")))
                 .min(LocalDateTime::compareTo)
                 .get();
         return date;
@@ -23,7 +23,7 @@ public class PostAnalyseService {
     public long avarageScore(List<Post> posts) {
         double avgScore = posts.stream()
                 .mapToInt(Post::getScore)
-                .filter(i->i != -2000)
+                .filter(i -> i != -2000)
                 .average()
                 .getAsDouble();
         return Math.round(avgScore);
@@ -47,9 +47,36 @@ public class PostAnalyseService {
     public LocalDateTime lastActivityDate(List<Post> posts) {
         LocalDateTime date = posts.stream()
                 .map(post -> post.getLastActivityDate())
-                .filter(p->!p.equals(LocalDateTime.parse("0000-01-01T00:00:00.000")))
+                .filter(p -> !p.equals(LocalDateTime.parse("0000-01-01T00:00:00.000")))
                 .max(LocalDateTime::compareTo)
                 .get();
         return date;
+    }
+
+    public int largestNumberOfViews(List<Post> posts) {
+        int largestNumberOfViews = posts.stream()
+                .map(Post::getViewCount)
+                .filter(i -> i != -2000)
+                .max(Integer::compareTo)
+                .get();
+        return largestNumberOfViews;
+    }
+
+    public int maxScore(List<Post> posts) {
+        int maxScore = posts.stream()
+                .map(Post::getScore)
+                .filter(i -> i != -2000)
+                .max(Integer::compareTo)
+                .get();
+        return maxScore;
+    }
+
+    public int minScore(List<Post> posts) {
+        int minScore = posts.stream()
+                .map(Post::getScore)
+                .filter(i -> i != -2000)
+                .min(Integer::compareTo)
+                .get();
+        return minScore;
     }
 }
