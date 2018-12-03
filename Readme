@@ -1,5 +1,10 @@
 to run docker image follow steps:
 
+to build and run image
 1) docker pull openjdk:8u181-jdk
 2) in the root directory of the project (where the dockerfile is): docker build -t job .
 3) docker run -p 8080:8080 job
+
+to get and run image from dockerhub:
+1) docker pull kalka77/job:interviewtask
+2) docker run -p 8080:8080 kalka77/job:interviewtask
